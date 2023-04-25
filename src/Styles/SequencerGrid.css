@@ -1,0 +1,9 @@
+.grid-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    width: 100vw;
+    height: 5vh;
+    background-color: black;
+}
