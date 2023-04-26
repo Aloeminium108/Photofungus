@@ -2,13 +2,24 @@
     width: 100%;
     height: 100%;
 
+    background-color: black;
+}
+
+.inactive-square {
+    width: 98%;
+    height: 98%;
+    z-index: 1;
+
     background-color: gray;
-    border: 1px solid black;
+    margin: 1%;
 }
 
 .active-square {
-    width: 100%;
-    height: 100%;
+    position: relative;
+    width: 98%;
+    height: 98%;
+    z-index: 1;
 
     background-color: aqua;
+    margin: 1%;
 }

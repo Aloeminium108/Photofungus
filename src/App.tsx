@@ -11,7 +11,7 @@ function App() {
 
   const NUM_MEASURES = 3;
 
-  const NUM_ROWS = 7;
+  const NUM_ROWS = 12;
   const NUM_COLUMNS = NUM_MEASURES * 8;
 
   const synths: Array<Tone.Synth> = [];
