@@ -2,6 +2,8 @@ import React from "react";
 import GridSquare from "./GridSquare";
 import '../Styles/SequencerGrid.css'
 
+
+
 function SequencerGrid(props: {numRows: number, numColumns: number}) {
 
     let grid = [];
@@ -11,7 +13,7 @@ function SequencerGrid(props: {numRows: number, numColumns: number}) {
         let row = [];
 
         for (let j = 0; j < props.numColumns; j++) {
-            row.push(<GridSquare key={`${i}-${j}`} />);
+            row.push(<GridSquare key={`${i}-${j}`} row={i} column={j} />);
         }
 
         grid.push(
