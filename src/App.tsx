@@ -6,6 +6,7 @@ import SequencerGrid from './Components/SequencerGrid';
 
 import SequencerContext from './Components/Context/SequencerContext';
 import PlaybackControls from './Components/PlaybackControls';
+import BPMSlider from './Components/BPMSlider';
 
 function App() {
 
@@ -27,8 +28,11 @@ function App() {
 
   const [grid, setGrid] = useState(new Array<Array<boolean>>(NUM_ROWS));
 
-  useEffect(() => {
+  const [bpm, setBPM] = useState(100);
 
+  const [octave, setOctave] = useState(4);
+
+  const clear = () => {
     const tempGrid = new Array<Array<boolean>>(NUM_ROWS)
 
     for (let i = 0; i < NUM_ROWS; i++) {
@@ -44,7 +48,10 @@ function App() {
     }
 
     setGrid(tempGrid);
+  }
 
+  useEffect(() => {
+    clear();
   }, []);
 
   const setGridSquare = (row: number, column: number, input: boolean) => {
@@ -58,7 +65,12 @@ function App() {
       synths: synths,
       numMeasures: NUM_MEASURES,
       grid: grid,
-      setGridSquare: setGridSquare
+      setGridSquare: setGridSquare,
+      setGrid: setGrid,
+      bpm: bpm,
+      setBPM: setBPM,
+      octave: octave,
+      setOctave: setOctave
     }}>
       <button onClick={readyAudio}>Ready Audio</button>
 
@@ -66,9 +78,11 @@ function App() {
       <NoteButton note="B4" />
       <NoteButton note="A4" />
 
-      <button onClick={() => {console.log(grid)}}>Print Sequence</button>
+      <button onClick={clear}>Clear</button>
 
       <PlaybackControls />
+
+      <BPMSlider />
 
       <SequencerGrid numRows={NUM_ROWS} numColumns={NUM_COLUMNS}/>
     </ SequencerContext.Provider>

@@ -19,7 +19,7 @@ const NOTES = [
 
 function PlaybackControls() {
 
-    const {synths, numMeasures, grid} = useContext(SequencerContext);
+    const {synths, numMeasures, grid, octave} = useContext(SequencerContext);
 
     const loop = useRef(new Tone.Loop());
 
@@ -36,7 +36,7 @@ function PlaybackControls() {
             for (let i = 0; i < grid.length; i++) {
                 for (let j = 0; j < grid[i].length; j++) {
                     if (grid[i][j]) {
-                        synths[i].triggerAttackRelease(NOTES[i] + 3, "8n", j > 0 ? `+0:${j/2}` : time);
+                        synths[i].triggerAttackRelease(NOTES[i] + octave, "8n", j > 0 ? `+0:${j/2}` : time);
                     }
                 }
             }

@@ -1,14 +1,20 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import '../Styles/GridSquare.css'
 import SequencerContext from "./Context/SequencerContext";
 
 function GridSquare(props: {row: number, column: number}) {
 
-    const {setGridSquare} = useContext(SequencerContext);
+    const {grid, setGridSquare} = useContext(SequencerContext);
 
     const [active, setActive] = useState(false);
 
     const [size, setSize] = useState(1);
+    
+    useEffect(() => {
+        if (grid[props.row] !== undefined && grid[props.row][props.column] !== undefined) {
+            setActive(grid[props.row][props.column]);
+        }
+    })
 
     const handleClick  = (e: React.MouseEvent) => {
         e.stopPropagation();
